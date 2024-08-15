@@ -53,8 +53,6 @@ install_on_linux_debian() {
 install_on_macos() {
     echo "Installing on MacOS..."
     
-    brew update
-    brew install curl iterm2
     curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
