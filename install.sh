@@ -22,7 +22,7 @@ install_on_wsl2() {
     echo "Installing on WSL2..."
     sudo apt-get update
     sudo apt-get install -y curl code
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
     sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
     sudo curl -fsSL https://get.jetify.com/devbox | bash
@@ -38,14 +38,14 @@ install_on_linux_debian() {
     echo "Installing on Linux-Debian..."
     sudo apt-get update
     sudo apt-get install -y curl code
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
     sudo curl -fsSL https://get.jetify.com/devbox | bash
+    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    sudo sed -i.bak 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
     sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     sudo echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
-    sudo sed -i.bak 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
     p10k configure
 }
 
@@ -56,14 +56,14 @@ install_on_macos() {
     brew update
     brew install curl iterm2
     brew install --cask visual-studio-code
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sh <(curl -L https://nixos.org/nix/install)
     sudo curl -fsSL https://get.jetify.com/devbox | bash
+    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    sudo sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
     sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     sudo echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
-    sudo sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
     p10k configure
 }
 
