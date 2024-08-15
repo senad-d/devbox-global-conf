@@ -1,12 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
   "packages": [
-    "awscli2",
-    "azure-cli",
-    "tfswitch",
-    "ansible",
-    "packer",
-    "jq"
+    "awscli2@latest",
+    "azure-cli@latest",
+    "tfswitch@latest",
+    "kubectl@latest",
+    "kubernetes-helm@latest",
+    "ansible@latest",
+    "packer@latest",
+    "lens@latest",
+    "jq@latest"
   ],
   "shell": {
     "init_hook": [
