@@ -57,7 +57,7 @@ install_on_macos() {
     brew install curl iterm2
     curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
-    echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
+    echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
     devbox global pill git@github.com:senad-d/devbox-global-conf.git
 }
