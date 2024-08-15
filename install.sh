@@ -27,8 +27,7 @@ install_on_wsl2() {
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
-    cp devbox.json ~/.local/share/devbox/global/default/devbox.json
-    devbox global update
+    devbox global pull https://github.com/senad-d/devbox-global-conf.git
 }
 
 # Function to install software on Linux (Debian)
@@ -41,8 +40,7 @@ install_on_linux_debian() {
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
-    cp devbox.json ~/.local/share/devbox/global/default/devbox.json
-    devbox global update
+    devbox global pull https://github.com/senad-d/devbox-global-conf.git
 }
 
 # Function to install software on MacOS
@@ -53,8 +51,7 @@ install_on_macos() {
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
-    cp devbox.json ~/.local/share/devbox/global/default/devbox.json
-    devbox global update
+    devbox global pull https://github.com/senad-d/devbox-global-conf.git
 }
 
 # Main script execution
