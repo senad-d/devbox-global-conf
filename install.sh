@@ -23,12 +23,12 @@ install_on_wsl2() {
     
     sudo apt-get update
     sudo apt-get install -y curl
-    sudo sh <(curl -L https://nixos.org/nix/install) --daemon
-    sudo curl -fsSL https://get.jetify.com/devbox | bash
-    sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
-    sudo echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
-    sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
-    devbox global pull https://github.com/senad-d/devbox-global-conf.git
+    curl -fsSL https://get.jetify.com/devbox | bash
+    echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
+    echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
+    echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
+    cp devbox.json ~/.local/share/devbox/global/default/devbox.json
+    devbox global update
 }
 
 # Function to install software on Linux (Debian)
@@ -37,12 +37,12 @@ install_on_linux_debian() {
     
     sudo apt-get update
     sudo apt-get install -y curl
-    sudo sh <(curl -L https://nixos.org/nix/install) --daemon
-    sudo curl -fsSL https://get.jetify.com/devbox | bash
-    sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
-    sudo echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
-    sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
-    devbox global pull https://github.com/senad-d/devbox-global-conf.git
+    curl -fsSL https://get.jetify.com/devbox | bash
+    echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
+    echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
+    echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
+    cp devbox.json ~/.local/share/devbox/global/default/devbox.json
+    devbox global update
 }
 
 # Function to install software on MacOS
@@ -53,7 +53,8 @@ install_on_macos() {
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
-    devbox global pull https://github.com/senad-d/devbox-global-conf.git
+    cp devbox.json ~/.local/share/devbox/global/default/devbox.json
+    devbox global update
 }
 
 # Main script execution

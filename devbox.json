@@ -9,6 +9,9 @@
     "ansible@latest",
     "packer@latest",
     "lens@latest",
+    "gitleaks@latest",
+    "zsh-autosuggestions@latest",
+    "zsh-autocomplete@latest",
     "jq@latest"
   ],
   "shell": {
