@@ -22,9 +22,14 @@ install_on_wsl2() {
     echo "Installing on WSL2..."
     sudo apt-get update
     sudo apt-get install -y curl code
+    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
     curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
+    echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
+    echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
+    p10k configure
 }
 
 # Function to install software on Linux (Debian)
@@ -32,9 +37,15 @@ install_on_linux_debian() {
     echo "Installing on Linux-Debian..."
     sudo apt-get update
     sudo apt-get install -y curl code
+    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
     curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
+    echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
+    echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
+    echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.bashrc
+    p10k configure
 }
 
 # Function to install software on MacOS
@@ -44,9 +55,15 @@ install_on_macos() {
     brew update
     brew install curl iterm2
     brew install --cask visual-studio-code
+    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sh <(curl -L https://nixos.org/nix/install)
     curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
+    echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
+    echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
+    echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
+    p10k configure
 }
 
 # Main script execution

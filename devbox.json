@@ -7,11 +7,10 @@
     "ansible",
     "packer",
     "jq",
-    "powerlevel10k@1.20.0"
+    "powerlevel10k"
   ],
   "shell": {
     "init_hook": [
-        "export PS1='📦 > '",
         "echo 'Welcome!'"
     ],
     "scripts": {
