@@ -54,6 +54,7 @@ install_on_macos() {
     echo "Installing on MacOS..."
     
     brew update
+    echo "Installing Iterm2"
     brew install curl iterm2
     echo "Installing VSCode"
     brew install --cask visual-studio-code
