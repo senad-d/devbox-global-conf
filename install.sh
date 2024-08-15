@@ -20,6 +20,7 @@ detect_os() {
 # Function to install software on Windows/WSL2
 install_on_wsl2() {
     echo "Installing on WSL2..."
+    
     sudo apt-get update
     sudo apt-get install -y curl
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
@@ -33,6 +34,7 @@ install_on_wsl2() {
 # Function to install software on Linux (Debian)
 install_on_linux_debian() {
     echo "Installing on Linux-Debian..."
+    
     sudo apt-get update
     sudo apt-get install -y curl
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
