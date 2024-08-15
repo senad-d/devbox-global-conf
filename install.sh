@@ -21,7 +21,7 @@ detect_os() {
 install_on_wsl2() {
     echo "Installing on WSL2..."
     sudo apt-get update
-    sudo apt-get install -y curl git code
+    sudo apt-get install -y curl code
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
     curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
@@ -31,7 +31,7 @@ install_on_wsl2() {
 install_on_linux_debian() {
     echo "Installing on Linux-Debian..."
     sudo apt-get update
-    sudo apt-get install -y curl git code
+    sudo apt-get install -y curl code
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
     curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
@@ -40,14 +40,9 @@ install_on_linux_debian() {
 # Function to install software on MacOS
 install_on_macos() {
     echo "Installing on MacOS..."
-    # Check for Homebrew and install if necessary
-    if ! command -v brew &> /dev/null; then
-        echo "Homebrew not found, installing it first..."
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-
+    
     brew update
-    brew install curl git iterm2
+    brew install curl iterm2
     brew install --cask visual-studio-code
     sh <(curl -L https://nixos.org/nix/install)
     curl -fsSL https://get.jetify.com/devbox | bash
