@@ -57,7 +57,7 @@ install_on_macos() {
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
-    devbox global pull git@github.com:senad-d/devbox-global-conf.git
+    devbox global pull https://github.com/senad-d/devbox-global-conf.git
 }
 
 # Main script execution
