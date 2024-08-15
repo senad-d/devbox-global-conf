@@ -55,12 +55,17 @@ install_on_macos() {
     
     brew update
     brew install curl iterm2
+    echo "Installing VSCode"
     brew install --cask visual-studio-code
-    sudo sh <(curl -L https://nixos.org/nix/install)
-    sudo curl -fsSL https://get.jetify.com/devbox | bash
+    echo "Installing Nix"
+    sh <(curl -L https://nixos.org/nix/install)
+    echo "Installing DevBox"
+    curl -fsSL https://get.jetify.com/devbox | bash
     sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
+    echo "Installing ohmyzsh"
     sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended --keep-zshrc
+    echo "Installing powerlevel10k"
     sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
     p10k configure
