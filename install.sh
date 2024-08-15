@@ -55,8 +55,6 @@ install_on_macos() {
     
     brew update
     brew install curl iterm2
-    brew install --cask visual-studio-code
-    sh <(curl -L https://nixos.org/nix/install)
     curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
