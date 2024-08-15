@@ -6,8 +6,7 @@
     "tfswitch",
     "ansible",
     "packer",
-    "jq",
-    "powerlevel10k"
+    "jq"
   ],
   "shell": {
     "init_hook": [

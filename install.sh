@@ -25,7 +25,7 @@ install_on_wsl2() {
     sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
-    curl -fsSL https://get.jetify.com/devbox | bash
+    sudo curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
@@ -41,7 +41,7 @@ install_on_linux_debian() {
     sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
-    curl -fsSL https://get.jetify.com/devbox | bash
+    cudo curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
@@ -57,9 +57,9 @@ install_on_macos() {
     brew install curl iterm2
     brew install --cask visual-studio-code
     sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    sh <(curl -L https://nixos.org/nix/install)
-    curl -fsSL https://get.jetify.com/devbox | bash
+    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    sudo sh <(curl -L https://nixos.org/nix/install)
+    sudo curl -fsSL https://get.jetify.com/devbox | bash
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
