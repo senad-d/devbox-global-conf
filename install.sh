@@ -28,7 +28,7 @@ install_on_wsl2() {
     echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
     cp devbox.json ~/.local/share/devbox/global/default/devbox.json
-    devbox global update
+    eval "$(devbox global shellenv --recompute)"
 }
 
 # Function to install software on Linux (Debian)
@@ -42,7 +42,7 @@ install_on_linux_debian() {
     echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
     cp devbox.json ~/.local/share/devbox/global/default/devbox.json
-    devbox global update
+    eval "$(devbox global shellenv --recompute)"
 }
 
 # Function to install software on MacOS
@@ -54,7 +54,7 @@ install_on_macos() {
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
     cp devbox.json ~/.local/share/devbox/global/default/devbox.json
-    devbox global update
+    eval "$(devbox global shellenv --recompute)"
 }
 
 # Main script execution
