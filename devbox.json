@@ -2,15 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
   "packages": [
     "awscli2",
-    "azure-cli",
-    "tfswitch",
-    "ansible",
-    "packer",
-    "jq"
+    "tfswitch"
   ],
   "shell": {
     "init_hook": [
-        "echo 'Welcome!'"
+        "echo 'Welcome to DevBox!'"
     ],
     "scripts": {
       "test": [
