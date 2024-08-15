@@ -58,12 +58,11 @@ install_on_macos() {
     brew install --cask visual-studio-code
     sudo sh <(curl -L https://nixos.org/nix/install)
     sudo curl -fsSL https://get.jetify.com/devbox | bash
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+    sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
+    sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
+    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended --keep-zshrc
     sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     sudo sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
-    sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
-    sudo echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
-    sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
     p10k configure
 }
 
