@@ -64,6 +64,34 @@
           "store_path": "/nix/store/fxq7h5gfcfvml9nldd6wi01fi528yh09-awscli2-2.15.43"
         }
       }
+    },
+    "iterm2@3.5.2": {
+      "last_modified": "2024-07-07T07:43:47Z",
+      "resolved": "github:NixOS/nixpkgs/b60793b86201040d9dee019a05089a9150d08b5b#iterm2",
+      "source": "devbox-search",
+      "version": "3.5.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/x10flnxga3cilfj1qfy5jf3j2bngv7v9-iterm2-3.5.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/x10flnxga3cilfj1qfy5jf3j2bngv7v9-iterm2-3.5.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/96k6k5m3j1gl9430zjkvkm4qi9znw2zr-iterm2-3.5.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/96k6k5m3j1gl9430zjkvkm4qi9znw2zr-iterm2-3.5.2"
+        }
+      }
     }
   }
 }
