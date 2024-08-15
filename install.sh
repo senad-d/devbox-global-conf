@@ -29,6 +29,7 @@ install_on_wsl2() {
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
+    sed -i.bak 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/'
     p10k configure
 }
 
@@ -44,7 +45,7 @@ install_on_linux_debian() {
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
-    echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.bashrc
+    sed -i.bak 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/'
     p10k configure
 }
 
@@ -62,7 +63,7 @@ install_on_macos() {
     echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
     echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
     echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
-    echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
+    sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/'
     p10k configure
 }
 
