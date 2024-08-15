@@ -4,7 +4,6 @@
     "awscli2",
     "azure-cli",
     "tfswitch",
-    "lens-desktop",
     "ansible",
     "packer",
     "jq"
