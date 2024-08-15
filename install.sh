@@ -21,32 +21,26 @@ detect_os() {
 install_on_wsl2() {
     echo "Installing on WSL2..."
     sudo apt-get update
-    sudo apt-get install -y curl code
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
-    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    sudo apt-get install -y curl
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
     sudo curl -fsSL https://get.jetify.com/devbox | bash
-    sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
-    sudo echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
-    sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
-    sudo sed -i.bak 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
-    p10k configure
+    sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
+    sudo echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
+    sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
+    devbox global pull https://github.com/senad-d/devbox-global-conf.git
 }
 
 # Function to install software on Linux (Debian)
 install_on_linux_debian() {
     echo "Installing on Linux-Debian..."
     sudo apt-get update
-    sudo apt-get install -y curl code
+    sudo apt-get install -y curl
     sudo sh <(curl -L https://nixos.org/nix/install) --daemon
     sudo curl -fsSL https://get.jetify.com/devbox | bash
-    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
-    sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-    sudo sed -i.bak 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
-    sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.zshrc
-    sudo echo 'eval "$(devbox global shellenv)"' >> ~/.zshrc
-    sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.zshrc
-    p10k configure
+    sudo echo 'eval "$(devbox global shellenv --init-hook)"' >> ~/.bashrc
+    sudo echo 'eval "$(devbox global shellenv)"' >> ~/.bashrc
+    sudo echo 'export PATH=$PATH:/Users/devbox/bin' >> ~/.bashrc
+    devbox global pull https://github.com/senad-d/devbox-global-conf.git
 }
 
 # Function to install software on MacOS
