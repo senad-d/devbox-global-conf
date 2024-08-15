@@ -4,13 +4,10 @@
     "awscli2",
     "azure-cli",
     "tfswitch",
-    "terraform-provider-kubernetes",
-    "lens-desktop",
     "kubernetes",
     "kubernetes-helm",
     "ansible",
     "packer",
-    "postman",
     "jq"
   ],
   "shell": {
