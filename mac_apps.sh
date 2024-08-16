@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# Log file location
+LOG_FILE="apps_install.log"
+
 # Function to log messages
 log() {
-    echo "$(date +'%Y-%m-%d %H:%M:%S') - $1"
+    echo "$(date +'%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
 }
 
 # Function to handle errors
@@ -16,6 +19,18 @@ set -e
 trap 'handle_error' ERR
 
 log "Starting software installation..."
+
+# Check if Homebrew is installed
+if ! command -v brew &>/dev/null; then
+    log "Homebrew not found. Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    log "Homebrew installation complete."
+else
+    log "Homebrew is already installed."
+fi
+
+log "Updating Homebrew..."
+brew update
 
 # Download and install Docker Desktop
 DOCKER_URL="https://desktop.docker.com/mac/main/arm64/Docker.dmg"
@@ -50,22 +65,19 @@ BREW_PACKAGES=(
 )
 
 BREW_CASKS=(
+    xquartz
+    zoom
+    openvpn-connect
     iterm2
     visual-studio-code
     grammarly-desktop
     shottr
     alt-tab
-    openvpn-connect
     raycast
     licecap
-    xquartz
     slack
-    zoom
     firefox
 )
-
-log "Updating Homebrew..."
-brew update
 
 log "Installing Brew packages..."
 for package in "${BREW_PACKAGES[@]}"; do
