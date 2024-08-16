@@ -8,15 +8,12 @@
     "kubernetes-helm@latest",
     "ansible@latest",
     "packer@latest",
-    "lens@latest",
     "gitleaks@latest",
-    "zsh-autosuggestions@latest",
-    "zsh-autocomplete@latest",
     "jq@latest"
   ],
   "shell": {
     "init_hook": [
-        "echo 'Welcome to DevBox!'"
+        "echo 'Welcome!'"
     ],
     "scripts": {
       "test": [
