@@ -29,9 +29,6 @@ else
     log "Homebrew is already installed."
 fi
 
-log "Updating Homebrew..."
-brew update
-
 # Download and install Docker Desktop
 DOCKER_URL="https://desktop.docker.com/mac/main/arm64/Docker.dmg"
 DOCKER_DMG="$HOME/Downloads/Docker.dmg"
@@ -57,6 +54,9 @@ rm "$DOCKER_DMG"
 
 log "Docker Desktop installation complete."
 
+log "Updating Homebrew..."
+brew update
+
 # Install Homebrew packages
 BREW_PACKAGES=(
     zsh-autocomplete
@@ -69,6 +69,8 @@ BREW_CASKS=(
     zoom
     openvpn-connect
     iterm2
+    powerlevel10k
+    git
     visual-studio-code
     grammarly-desktop
     shottr
@@ -96,5 +98,9 @@ for cask in "${BREW_CASKS[@]}"; do
         brew install --cask "$cask"
     fi
 done
+
+echo 'source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
+echo 'source $(brew --prefix)/zsh-autocomplete/zsh-autocomplete.plugin.zsh' >> ~/.zshrc
+echo 'source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 
 log "Software installation complete."
