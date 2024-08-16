@@ -25,6 +25,7 @@ if ! command -v brew &>/dev/null; then
     log "Homebrew not found. Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "eval "$(/opt/homebrew/bin/brew shellenv)"" >> ~/.zprofile
+    source ~/.zprofile
     log "Homebrew installation complete."
 else
     log "Homebrew is already installed."
