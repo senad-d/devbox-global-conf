@@ -64,6 +64,7 @@ install_software() {
     devbox global pull https://github.com/senad-d/devbox-global-conf.git || handle_error
     log_message "Global Devbox configuration pulled successfully."
 
+    eval "$(devbox global shellenv)"
 
     # Install additional software using Nix
     log_message "Installing additional software using Nix..."
