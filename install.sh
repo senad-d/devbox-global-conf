@@ -56,7 +56,6 @@ install_software() {
     fi
 
     echo 'eval "$(devbox global shellenv --init-hook)"' >> "$shell_config"
-    echo 'eval "$(devbox global shellenv)"' >> "$shell_config"
     echo 'export PATH=$PATH:/Users/devbox/bin' >> "$shell_config"
     log_message "Shell environment updated for $os_type."
     
@@ -71,17 +70,18 @@ install_software() {
 
     if [[ "$os_type" == "MacOS" ]]; then
         nix-env -iA nixpkgs.xquartz \
-                    nixpkgs.openvpn \
                     nixpkgs.iterm2 \
+                    nixpkgs.oh-my-zsh \
                     nixpkgs.zsh-powerlevel10k \
                     nixpkgs.zsh-autocomplete \
                     nixpkgs.zsh-autosuggestions \
+                    nixpkgs.zsh-syntax-highlighting \
+                    nixpkgs.zsh-fzf-history-search \
                     nixpkgs.git \
-                    nixpkgs.vscode \
-                    nixpkgs.alt-tab-macos \
-                    nixpkgs.raycast \
-                    nixpkgs.slack \
-                    nixpkgs.firefox || handle_error
+                    nixpkgs.alt-tab-macos || handle_error
+        echo 'source ~/.nix-profile/share/oh-my-zsh/oh-my-zsh.sh' \
+             'ZSH_THEME="powerlevel10k/powerlevel10k"' \
+             'plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-autocomplete zsh-fzf-history-search)' >> "$shell_config"
     elif [[ "$os_type" == "WSL2" || "$os_type" == "Linux-Debian" ]]; then
         nix-env -iA nixpkgs.git \
                     nixpkgs.vscode \
@@ -107,3 +107,5 @@ case "$os_type" in
 esac
 
 log_message "Installation complete!"
+
+source ~/.zshrc
