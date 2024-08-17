@@ -1,7 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.12.0/.schema/devbox.schema.json",
   "packages": [
-    "darwin.xcode@latest",
     "awscli2@latest",
     "azure-cli@latest",
     "tfswitch@latest",
