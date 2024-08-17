@@ -71,17 +71,15 @@ install_software() {
 
     if [[ "$os_type" == "MacOS" ]]; then
         nix-env -iA nixpkgs.xquartz \
-                    nixpkgs.zoom-us \
                     nixpkgs.openvpn \
                     nixpkgs.iterm2 \
-                    nixpkgs.powerlevel10k \
+                    nixpkgs.zsh-powerlevel10k \
+                    nixpkgs.zsh-autocomplete \
+                    nixpkgs.zsh-autosuggestions \
                     nixpkgs.git \
                     nixpkgs.vscode \
-                    nixpkgs.grammarly-desktop \
-                    nixpkgs.shottr \
                     nixpkgs.alt-tab-macos \
                     nixpkgs.raycast \
-                    nixpkgs.licecap \
                     nixpkgs.slack \
                     nixpkgs.firefox || handle_error
     elif [[ "$os_type" == "WSL2" || "$os_type" == "Linux-Debian" ]]; then
