@@ -70,8 +70,7 @@ install_software() {
     log_message "Installing additional software using Nix..."
 
     if [[ "$os_type" == "MacOS" ]]; then
-        nix-env -iA nixos.darwin.xcode \
-                    nixpkgs.xquartz \
+        nix-env -iA nixpkgs.xquartz \
                     nixpkgs.zoom-us \
                     nixpkgs.openvpn \
                     nixpkgs.iterm2 \
