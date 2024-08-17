@@ -60,15 +60,13 @@ install_software() {
     echo 'export PATH=$PATH:/Users/devbox/bin' >> "$shell_config"
     log_message "Shell environment updated for $os_type."
 
-    # Pull global Devbox configuration
-    devbox global pull https://github.com/senad-d/devbox-global-conf.git || handle_error
-    log_message "Global Devbox configuration pulled successfully."
 
     # Install additional software using Nix
     log_message "Installing additional software using Nix..."
 
     if [[ "$os_type" == "MacOS" ]]; then
-        nix-env -iA nixpkgs.xquartz \
+        nix-env -iA nixos.darwin.xcode \
+                    nixpkgs.xquartz \
                     nixpkgs.zoom-us \
                     nixpkgs.openvpn \
                     nixpkgs.iterm2 \
@@ -91,6 +89,10 @@ install_software() {
     fi
 
     log_message "Additional software installed successfully."
+    
+    # Pull global Devbox configuration
+    devbox global pull https://github.com/senad-d/devbox-global-conf.git || handle_error
+    log_message "Global Devbox configuration pulled successfully."
 }
 
 # Main script execution
