@@ -59,6 +59,10 @@ install_software() {
     echo 'eval "$(devbox global shellenv)"' >> "$shell_config"
     echo 'export PATH=$PATH:/Users/devbox/bin' >> "$shell_config"
     log_message "Shell environment updated for $os_type."
+    
+    # Pull global Devbox configuration
+    devbox global pull https://github.com/senad-d/devbox-global-conf.git || handle_error
+    log_message "Global Devbox configuration pulled successfully."
 
 
     # Install additional software using Nix
@@ -89,10 +93,6 @@ install_software() {
     fi
 
     log_message "Additional software installed successfully."
-    
-    # Pull global Devbox configuration
-    devbox global pull https://github.com/senad-d/devbox-global-conf.git || handle_error
-    log_message "Global Devbox configuration pulled successfully."
 }
 
 # Main script execution
