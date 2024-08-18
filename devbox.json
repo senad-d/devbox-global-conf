@@ -9,6 +9,7 @@
     "ansible@latest",
     "packer@latest",
     "gitleaks@latest",
+    "git@latest",
     "jq@latest"
   ],
   "shell": {
