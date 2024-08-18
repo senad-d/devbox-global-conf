@@ -76,14 +76,12 @@ install_software() {
                     nixpkgs.zsh-autocomplete \
                     nixpkgs.zsh-autosuggestions \
                     nixpkgs.zsh-syntax-highlighting \
-                    nixpkgs.zsh-fzf-history-search \
                     nixpkgs.git \
                     nixpkgs.alt-tab-macos || handle_error
         echo 'source ~/.nix-profile/share/oh-my-zsh/oh-my-zsh.sh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> "$shell_config"
-        echo 'source ~/.nix-profile/share/zsh-fzf-history-search/zsh-fzf-history-search.zsh' >> "$shell_config"    
     elif [[ "$os_type" == "WSL2" || "$os_type" == "Linux-Debian" ]]; then
         nix-env -iA nixpkgs.git \
                     nixpkgs.vscode \
