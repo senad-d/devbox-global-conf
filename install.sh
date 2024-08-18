@@ -110,4 +110,4 @@ esac
 
 log_message "Installation complete!"
 
-source ~/.zshrc
+source "$shell_config"
