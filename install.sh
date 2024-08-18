@@ -84,6 +84,30 @@ install_software() {
         echo 'source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-fzf-history-search/zsh-fzf-history-search.zsh' >> "$shell_config"
+        # Download and install Docker Desktop
+        DOCKER_URL="https://desktop.docker.com/mac/main/arm64/Docker.dmg"
+        DOCKER_DMG="$HOME/Downloads/Docker.dmg"
+        
+        log_message "Downloading Docker Desktop..."
+        if [ ! -f "$DOCKER_DMG" ]; then
+            curl -L "$DOCKER_URL" -o "$DOCKER_DMG"
+        else
+            log "Docker DMG already exists. Skipping download."
+        fi
+        
+        log_message "Mounting Docker DMG..."
+        hdiutil attach "$DOCKER_DMG" -nobrowse -quiet
+        
+        log_message "Copying Docker.app to Applications..."
+        cp -r /Volumes/Docker/Docker.app /Applications/
+        
+        log_message "Unmounting Docker DMG..."
+        hdiutil detach /Volumes/Docker -quiet
+        
+        log_message "Cleaning up Docker DMG..."
+        rm "$DOCKER_DMG"
+        
+        log_message "Docker Desktop installation complete."    
     elif [[ "$os_type" == "WSL2" || "$os_type" == "Linux-Debian" ]]; then
         nix-env -iA nixpkgs.git \
                     nixpkgs.vscode \
@@ -93,7 +117,7 @@ install_software() {
     fi
 
     log_message "Additional software installed successfully."
-    
+
     source "$shell_config"
 }
 
