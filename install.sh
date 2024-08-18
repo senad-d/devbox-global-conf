@@ -80,8 +80,10 @@ install_software() {
                     nixpkgs.git \
                     nixpkgs.alt-tab-macos || handle_error
         echo 'source ~/.nix-profile/share/oh-my-zsh/oh-my-zsh.sh' >> "$shell_config"
-        echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> "$shell_config"
-        echo 'plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-autocomplete zsh-fzf-history-search)' >> "$shell_config"
+        echo 'source ~/.nix-profile/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh' >> "$shell_config"
+        echo 'source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> "$shell_config"
+        echo 'source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> "$shell_config"
+        echo 'source ~/.nix-profile/share/joshskidmore/zsh-fzf-history-search.zsh' >> "$shell_config"
     elif [[ "$os_type" == "WSL2" || "$os_type" == "Linux-Debian" ]]; then
         nix-env -iA nixpkgs.git \
                     nixpkgs.vscode \
