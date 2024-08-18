@@ -78,7 +78,7 @@ install_software() {
                     nixpkgs.zsh-syntax-highlighting \
                     nixpkgs.alt-tab-macos || handle_error
         echo 'source ~/.nix-profile/share/oh-my-zsh/oh-my-zsh.sh' >> "$shell_config"
-        echo 'source ~/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theam' >> "$shell_config"
+        echo 'source ~/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> "$shell_config"
