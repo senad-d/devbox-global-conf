@@ -83,7 +83,7 @@ install_software() {
         echo 'source ~/.nix-profile/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> "$shell_config"
-        echo 'source ~/.nix-profile/share/joshskidmore/zsh-fzf-history-search.zsh' >> "$shell_config"
+        echo 'source ~/.nix-profile/share/zsh-fzf-history-search/zsh-fzf-history-search.zsh' >> "$shell_config"
     elif [[ "$os_type" == "WSL2" || "$os_type" == "Linux-Debian" ]]; then
         nix-env -iA nixpkgs.git \
                     nixpkgs.vscode \
@@ -93,6 +93,8 @@ install_software() {
     fi
 
     log_message "Additional software installed successfully."
+    
+    source "$shell_config"
 }
 
 # Main script execution
@@ -110,4 +112,3 @@ esac
 
 log_message "Installation complete!"
 
-source "$shell_config"
