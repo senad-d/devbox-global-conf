@@ -56,7 +56,10 @@ install_software() {
     fi
 
     echo 'eval "$(devbox global shellenv --init-hook)"' >> "$shell_config"
+    echo 'eval "$(thefuck --alias)"' >> "$shell_config"
     echo 'export PATH=$PATH:/Users/devbox/bin' >> "$shell_config"
+    echo 'alias cat="bat -pP"' >> "$shell_config"
+    
     log_message "Shell environment updated for $os_type."
     
     # Pull global Devbox configuration
@@ -82,12 +85,13 @@ install_software() {
         echo 'source ~/.nix-profile/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> "$shell_config"
         echo 'source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> "$shell_config"
+        echo 'eval "$(zoxide init --cmd cd zsh)"' >> "$shell_config"
     elif [[ "$os_type" == "WSL2" || "$os_type" == "Linux-Debian" ]]; then
-        nix-env -iA nixpkgs.git \
-                    nixpkgs.vscode \
+        nix-env -iA nixpkgs.vscode \
                     nixpkgs.openvpn \
                     nixpkgs.slack \
                     nixpkgs.firefox || handle_error
+        echo 'eval "$(zoxide init --cmd cd bash)"' >> "$shell_config"
     fi
 
     log_message "Additional software installed successfully."

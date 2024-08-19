@@ -12,7 +12,9 @@
     "git@latest",
     "gh@latest",
     "thefuck@latest",
+    "k9s@latest",
     "fzf@latest",
+    "zoxide@latest",
     "jq@latest",
     "yq@latest",
     "tmux@latest",
@@ -23,8 +25,8 @@
         "echo 'Welcome!'"
     ],
     "scripts": {
-      "test": [
-        "echo \"Error: no test specified\" && exit 1"
+      "ver": [
+        "aws --version && az --version && kubectl version && helm version && ansible --version"
       ]
     }
   }
