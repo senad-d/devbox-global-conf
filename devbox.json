@@ -10,7 +10,13 @@
     "packer@latest",
     "gitleaks@latest",
     "git@latest",
-    "jq@latest"
+    "gh@latest",
+    "thefuck@latest",
+    "fzf@latest",
+    "jq@latest",
+    "yq@latest",
+    "tmux@latest",
+    "bat@latest"
   ],
   "shell": {
     "init_hook": [
