@@ -59,8 +59,10 @@ install_software() {
     echo 'eval "$(thefuck --alias)"' >> "$shell_config"
     echo 'export PATH=$PATH:/Users/devbox/bin' >> "$shell_config"
     echo 'alias cat="bat -pP"' >> "$shell_config"
-    
+
     log_message "Shell environment updated for $os_type."
+    
+    export NIXPKGS_ALLOW_UNFREE=1
     
     # Pull global Devbox configuration
     devbox global pull https://github.com/senad-d/devbox-global-conf.git || handle_error
